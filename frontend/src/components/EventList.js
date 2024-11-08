@@ -23,15 +23,21 @@ function EventList() {
     };
 
     return (
-        <div>
-            <h2>Event List</h2>
+        <div className='eventList'>
+            <h2 className='heading2'>Event List:</h2>
             <ol>
                 {events.map(event => (
                     <li key={event._id}>
-                        <h3>{event.title}</h3>
-                        <p>{event.description}</p>
-                        <p>{new Date(event.date).toLocaleDateString()}</p>
-                        <button onClick={() => deleteEvent(event._id)}>Delete</button>
+                        <div className="title">
+                            <h3>{event.title}</h3>
+                        </div>
+                        <div className='description'>
+                            <p>{event.description}</p>
+                        </div>
+                        <div className="date">
+                            <p>{new Date(event.date).toLocaleDateString()}</p>
+                        </div>
+                        <button className='delete' onClick={() => deleteEvent(event._id)}>Delete</button>
                     </li>
                 ))}
             </ol>
