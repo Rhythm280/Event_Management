@@ -47,15 +47,18 @@ router.put('/:id', async (req, res) => {
 });
 
 // DELETE an event by ID
-router.delete('/:id', async (req, res) => {
+router.delete('/api/events/:id', async (req, res) => {
     try {
-        const event = await Event.findById(req.params.id);
-        if (!event) return res.status(404).json({ message: 'Event not found' });
+        const { id } = req.params;
+        const event = await Event.findByIdAndDelete(id);
 
-        await event.remove();
-        res.json({ message: 'Event deleted' });
-    } catch (err) {
-        res.status(500).json({ message: err.message });
+        if (!event) {
+            return res.status(404).json({ message: 'Event not found' });
+        }
+
+        res.json({ message: 'Event deleted successfully' });
+    } catch (error) {
+        res.status(500).json({ error: 'Server error' });
     }
 });
 
