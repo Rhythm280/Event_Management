@@ -1,1 +1,2 @@
-This is my firest full solo Project in this i have made an Event-Management-System.
+# Event-Management-Systemm
+This is my first full solo Project in this I have made a Event-Management-System.
